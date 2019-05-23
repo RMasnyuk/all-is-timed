@@ -1,14 +1,16 @@
 const time = document.querySelector('#timeSpent');
+let count = +localStorage['time'];
+if (!localStorage.hasOwnProperty('time')){
+    count = 0;
+}
 
-window.addEventListener('load', function() {
-    let count = +localStorage['time'];
-    if(count === undefined) {
-        count = 0;
-    }
-
+window.addEventListener('load', function () {
     setInterval(function () {
         count += 1;
         time.textContent = count;
-        localStorage['time'] =  count;
-    } , 1000);
+    }, 1000);
+});
+
+window.addEventListener('unload', function () {
+    localStorage['time'] = count;
 });
