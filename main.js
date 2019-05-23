@@ -1,8 +1,5 @@
 const time = document.querySelector('#timeSpent');
-let count = +localStorage.getItem('time');
-if(count === undefined) {
-    count = 0;
-}
+let count = +localStorage.getItem('time') || 0;
 
 window.addEventListener('load', function () {
     setInterval(function () {
